@@ -16,13 +16,23 @@
 
 int main(void) {
     try {
-        Bureaucrat bur("Maxim", 151);
+        Bureaucrat bur("Maxim", 149);
+        std::cout << bur << std::endl;
+        bur.increment_grade();
+        std::cout << bur << std::endl;
+        bur.decrement_grade();
+        std::cout << bur << std::endl;
+        bur.decrement_grade();
+        std::cout << bur << std::endl;
+        Bureaucrat crat;
+        crat = bur;
+        std::cout << crat << std::endl;
+        crat.increment_grade();
+        std::cout << crat << std::endl;
     }
-    catch 
-    Bureaucrat bur("Maxim", 151);
-    std::cout << bur << std::endl;
-    bur.increment_grade();
-    std::cout << bur << std::endl;
+    catch (const std::exception &e) {
+        std::cout << "Exception: " << e.what() << std::endl;
+    }
 
     return 0;
 }

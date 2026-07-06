@@ -17,30 +17,21 @@
 
 static const std::string className = "Bureaucrat";
 
-Bureaucrat::Bureaucrat(void) : _name("Default"), _grade(18) {
+Bureaucrat::Bureaucrat(void) : _name("Default"), _grade(149) {
     std::cout << className << " Default constructor called" << std::endl;
 }
 
 Bureaucrat::Bureaucrat(const std::string name, int grade) : _name(name) {
+        if (grade < 1)
+            throw (Bureaucrat::GradeTooHighException());
+        else if (grade > 150)
+            throw (Bureaucrat::GradeTooLowException());
 
-    try {
         setGrade(grade);
-
-        if (this->getGrade() < 1)
-            throw "GradeTooHighException";
-        else if (this->getGrade() > 150)
-            throw "GradeTooLowException";
-
-    std::cout << className << " Constructor successfully called" << std::endl;
-    }
-    catch (const char* msg) {
-        std::cout << "Exception - Bureaucrat::" << msg << std::endl;
-    }
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat &copy) {
+Bureaucrat::Bureaucrat(const Bureaucrat &copy) : _name(copy._name), _grade(copy._grade) {
     std::cout << className << " Copy constructor called" << std::endl;
-    setGrade(copy.getGrade());
 }
 
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat& copy) {
@@ -50,7 +41,7 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat& copy) {
     return (*this);
 }
 
-~Bureaucrat(void) {
+Bureaucrat::~Bureaucrat(void) {
     std::cout << className << " Destructor called" << std::endl;
 }
 
@@ -69,6 +60,8 @@ std::ostream& operator<<(std::ostream &o, const Bureaucrat& clone) {
 
 void Bureaucrat::increment_grade(void) {
     int temp = getGrade();
+    if (temp == 1)
+        throw (Bureaucrat::GradeTooHighException());
     temp--;
     std::cout << "Incremented successfully." << std::endl; 
     setGrade(temp);
@@ -76,6 +69,8 @@ void Bureaucrat::increment_grade(void) {
 
 void Bureaucrat::decrement_grade(void) {
     int temp = getGrade();
+    if (temp == 150)
+        throw (Bureaucrat::GradeTooLowException());
     temp++;
     std::cout << "Decremented successfully." << std::endl; 
     setGrade(temp);
@@ -83,6 +78,16 @@ void Bureaucrat::decrement_grade(void) {
 
 const std::string Bureaucrat::getName(void) const { return (this->_name); }
 
+// void Bureaucrat::setName(const std::string name) { this->_name = name; }
+
 void Bureaucrat::setGrade(int grade) { this->_grade = grade; }
 
 int Bureaucrat::getGrade(void) const { return (this->_grade); }
+
+const char* Bureaucrat::GradeTooHighException::what() const throw() {
+    return ("Grade is too high");
+}
+
+const char* Bureaucrat::GradeTooLowException::what() const throw() {
+    return ("Grade is too low");
+}
