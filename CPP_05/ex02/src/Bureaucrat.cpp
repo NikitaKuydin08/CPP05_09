@@ -22,12 +22,12 @@ Bureaucrat::Bureaucrat(void) : _name("Default"), _grade(149) {
 }
 
 Bureaucrat::Bureaucrat(const std::string name, int grade) : _name(name) {
-        if (grade < 1)
-            throw (Bureaucrat::GradeTooHighException());
-        else if (grade > 150)
-            throw (Bureaucrat::GradeTooLowException());
+    if (grade < 1)
+        throw (Bureaucrat::GradeTooHighException());
+    else if (grade > 150)
+        throw (Bureaucrat::GradeTooLowException());
 
-        setGrade(grade);
+    setGrade(grade);
     std::cout << className << " Parameterized constructor called" << std::endl;
 }
 
@@ -46,8 +46,28 @@ Bureaucrat::~Bureaucrat(void) {
     std::cout << className << " Destructor called" << std::endl;
 }
 
-void signForm(void) {
-    Form::
+void Bureaucrat::signForm(Form& form) {
+    try {
+        form.beSigned(*this);
+        std::cout << this->getName() << " signed " << form.getName()
+        << " successfully." << std::endl;
+    }
+    catch (const std::exception &e) {
+        std::cout << this->getName() << " couldn't sign " << form.getName() 
+        << " because " << e.what() << std::endl;
+    }
+}
+
+void executeForm(const AForm& form) const {
+    try {
+        form.execute(*this);
+        std::cout << this->getName() << " executed " << form.getName()
+        << " successfully." << std::endl;
+    }
+    catch (const std::exception &e) {
+        std::cout << this->getName() << " couldn't execute " << form.getName()
+        << " because " << e.what() << std::endl;
+    }
 }
 
 std::string Bureaucrat::info(void) const {

@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FORM_HPP
-# define FORM_HPP
+#ifndef AFORM_HPP
+# define AFORM_HPP
 
 # include "Bureaucrat.hpp"
 # include <exception>
@@ -19,7 +19,7 @@
 
 class Bureaucrat;
 
-class Form {
+class AForm {
     private:
         const std::string _name;
         bool _isSigned;
@@ -27,13 +27,15 @@ class Form {
         const int _toExec;
 
     public:
-        Form(void);
-        Form(const std::string name, const int toSign, const int toExec);
-        Form(const Form& copy);
-        Form& operator=(const Form& copy);
-        ~Form(void);
+        AForm(void);
+        AForm(const std::string name, const int toSign, const int toExec);
+        AForm(const AForm& copy);
+        AForm& operator=(const AForm& copy);
+        virtual ~AForm(void) = 0;
 
         void beSigned(const Bureaucrat& other);
+
+        void execute(const Bureaucrat& executor) const;
 
         void setToSign(const int sign);
         void setToExec(const int exec);
@@ -56,6 +58,6 @@ class Form {
         };
 };
 
-std::ostream& operator<<(std::ostream &o, const Form& other);
+std::ostream& operator<<(std::ostream &o, const AForm& other);
 
 #endif

@@ -13,11 +13,11 @@
 #ifndef BUREAUCRAT_HPP
 # define BUREAUCRAT_HPP
 
-# include "Form.hpp"
+# include "AForm.hpp"
 # include <string>
 # include <exception>
 
-class Form;
+class AForm;
 
 class Bureaucrat {
     private:
@@ -31,7 +31,8 @@ class Bureaucrat {
         Bureaucrat& operator=(const Bureaucrat &copy);
         ~Bureaucrat(void);
 
-        void signForm(Form& form);
+        void signForm(AForm& form);
+        void executeForm(const AForm& form) const;
 
         const std::string getName(void) const;
         void setName(const std::string);
