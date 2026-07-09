@@ -39,6 +39,7 @@ AForm::AForm(const AForm& copy) : _name(copy._name), _isSigned(copy._isSigned),
 AForm& AForm::operator=(const AForm& copy) {
     std::cout << className << " Copy assignment operator called" << std::endl;
     if (this == &copy) return (*this);
+    this->_name = (copy.getName());
     setIsSigned(copy.getIsSigned());
     return (*this);
 }
@@ -51,11 +52,20 @@ void AForm::beSigned(const Bureaucrat& other) {
     if (other.getGrade() <= this->getToSign())
         setIsSigned(true);
     else
-        throw (Bureaucrat::GradeTooLowException());
+        throw (AForm::GradeTooLowException());
 }
 
-void execute(const Bureaucrat& executor) const {
-    
+void AForm::doAction(void) const {
+    std::cout << "AForm do action never calls" << std::endl;
+}
+
+void AForm::execute(const Bureaucrat& executor) const {
+    if (_isSigned == false)
+        throw (AForm::FormIsSigned());
+    if (executor.getGrade() > getToExec())
+        throw (AForm::GradeTooLowException());
+
+    doAction();
 }
 
 std::string AForm::info(void) const {
@@ -80,7 +90,12 @@ const char* AForm::GradeTooLowException::what() const throw() {
     return ("Required grade is too low!");
 }
 
+const char* AForm::FormIsSigned::what() const throw() {
+    return ("Form isn't signed.");
+}
+
 void AForm::setIsSigned(bool Signed) { this->_isSigned = Signed; }
+void AForm::setName(std::string name) {this->_name = name; }
 
 const std::string AForm::getName(void) const { return (this->_name); }
 int AForm::getToSign(void) const { return (this->_toSign); }

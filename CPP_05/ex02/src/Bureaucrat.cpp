@@ -17,7 +17,7 @@
 
 static const std::string className = "Bureaucrat";
 
-Bureaucrat::Bureaucrat(void) : _name("Default"), _grade(149) {
+Bureaucrat::Bureaucrat(void) : _name("Default"), _grade(42) {
     std::cout << className << " Default constructor called" << std::endl;
 }
 
@@ -46,7 +46,7 @@ Bureaucrat::~Bureaucrat(void) {
     std::cout << className << " Destructor called" << std::endl;
 }
 
-void Bureaucrat::signForm(Form& form) {
+void Bureaucrat::signForm(AForm& form) {
     try {
         form.beSigned(*this);
         std::cout << this->getName() << " signed " << form.getName()
@@ -58,7 +58,7 @@ void Bureaucrat::signForm(Form& form) {
     }
 }
 
-void executeForm(const AForm& form) const {
+void Bureaucrat::executeForm(const AForm& form) const {
     try {
         form.execute(*this);
         std::cout << this->getName() << " executed " << form.getName()

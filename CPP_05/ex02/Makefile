@@ -9,7 +9,12 @@ INCLUDE_DIRS = \
 INCLUDE = ${addprefix -I, ${INCLUDE_DIRS}}
 
 SRC = \
-				./src/
+				./src/AForm.cpp \
+				./src/Bureaucrat.cpp \
+				./src/main.cpp \
+				./src/PresidentialPardonForm.cpp \
+				./src/RobotomyRequestForm.cpp \
+				./src/ShrubberyCreationForm.cpp
 
 OBJ = ${patsubst ./src/%.cpp,./obj/%.o,${SRC}}
 
