@@ -3,17 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkuydin <nikitakuydin@qmail.com>           #+#  +:+       +#+        */
+/*   By: nkuydin <nkuydin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026-06-29 07:39:48 by nkuydin           #+#    #+#             */
-/*   Updated: 2026-06-29 07:39:48 by nkuydin          ###   ########.fr       */
+/*   Created: 2026/06/29 07:39:48 by nkuydin           #+#    #+#             */
+/*   Updated: 2026/07/15 18:56:19 by nkuydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BUREAUCRAT_HPP
 # define BUREAUCRAT_HPP
 
-# include "Form.hpp"
 # include <string>
 # include <exception>
 
@@ -34,7 +33,6 @@ class Bureaucrat {
         void signForm(Form& form);
 
         const std::string getName(void) const;
-        void setName(const std::string);
         int getGrade(void) const;
         void setGrade(int grade);
 

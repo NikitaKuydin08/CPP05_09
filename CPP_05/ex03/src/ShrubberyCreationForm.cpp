@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ShrubberyCreationForm.cpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkuydin <nikitakuydin@qmail.com>           #+#  +:+       +#+        */
+/*   By: nkuydin <nkuydin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026-07-08 09:09:43 by nkuydin           #+#    #+#             */
-/*   Updated: 2026-07-08 09:09:43 by nkuydin          ###   ########.fr       */
+/*   Created: 2026/07/08 09:09:43 by nkuydin           #+#    #+#             */
+/*   Updated: 2026/07/15 18:35:48 by nkuydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <iostream>
 #include <fstream>
 #include <cerrno>
+#include <cstring>
 
 static const std::string className = "ShrubberyCreationForm";
 

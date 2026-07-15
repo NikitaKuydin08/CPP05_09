@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkuydin <nikitakuydin@qmail.com>           #+#  +:+       +#+        */
+/*   By: nkuydin <nkuydin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026-06-29 10:23:11 by nkuydin           #+#    #+#             */
-/*   Updated: 2026-06-29 10:23:11 by nkuydin          ###   ########.fr       */
+/*   Created: 2026/06/29 10:23:11 by nkuydin           #+#    #+#             */
+/*   Updated: 2026/07/15 19:05:12 by nkuydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,19 @@ int main(void) {
     }
     catch (const std::exception &e) {
         std::cout << "Exception: " << e.what() << std::endl;
+    }
+
+    std::cout << "\033[33mUnable to sign -->\033[0m\n";
+    try {
+        Bureaucrat crat("Peter", 45);
+        std::cout << crat << std::endl;
+        Form form("Form1", 30, 100);
+        std::cout << form << std::endl;
+        crat.signForm(form);
+        std::cout << form << std::endl;
+    }
+    catch (const std::exception &e) {
+         std::cout << "Exception: " << e.what() << std::endl;
     }
 
     return 0;

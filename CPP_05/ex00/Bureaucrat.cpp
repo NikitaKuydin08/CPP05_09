@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkuydin <nikitakuydin@qmail.com>           #+#  +:+       +#+        */
+/*   By: nkuydin <nkuydin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026-06-29 07:51:47 by nkuydin           #+#    #+#             */
-/*   Updated: 2026-06-29 07:51:47 by nkuydin          ###   ########.fr       */
+/*   Created: 2026/06/29 07:51:47 by nkuydin           #+#    #+#             */
+/*   Updated: 2026/07/15 18:46:25 by nkuydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,6 @@ Bureaucrat::~Bureaucrat(void) {
     std::cout << className << " Destructor called" << std::endl;
 }
 
-void signForm(void) {
-    Form::
-}
-
 std::string Bureaucrat::info(void) const {
     std::ostringstream oss;
 
@@ -82,8 +78,6 @@ void Bureaucrat::decrement_grade(void) {
 }
 
 const std::string Bureaucrat::getName(void) const { return (this->_name); }
-
-// void Bureaucrat::setName(const std::string name) { this->_name = name; }
 
 void Bureaucrat::setGrade(int grade) { this->_grade = grade; }
 

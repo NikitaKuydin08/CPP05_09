@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkuydin <nikitakuydin@qmail.com>           #+#  +:+       +#+        */
+/*   By: nkuydin <nkuydin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026-06-29 07:39:48 by nkuydin           #+#    #+#             */
-/*   Updated: 2026-06-29 07:39:48 by nkuydin          ###   ########.fr       */
+/*   Created: 2026/06/29 07:39:48 by nkuydin           #+#    #+#             */
+/*   Updated: 2026/07/15 18:42:40 by nkuydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ class Bureaucrat {
         ~Bureaucrat(void);
 
         const std::string getName(void) const;
-        void setName(const std::string);
         int getGrade(void) const;
         void setGrade(int grade);
 

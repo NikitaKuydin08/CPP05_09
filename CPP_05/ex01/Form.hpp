@@ -3,17 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   Form.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkuydin <nikitakuydin@qmail.com>           #+#  +:+       +#+        */
+/*   By: nkuydin <nkuydin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026-07-06 12:19:04 by nkuydin           #+#    #+#             */
-/*   Updated: 2026-07-06 12:19:04 by nkuydin          ###   ########.fr       */
+/*   Created: 2026/07/06 12:19:04 by nkuydin           #+#    #+#             */
+/*   Updated: 2026/07/15 18:56:24 by nkuydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FORM_HPP
 # define FORM_HPP
 
-# include "Bureaucrat.hpp"
 # include <exception>
 # include <string>
 
@@ -35,8 +34,6 @@ class Form {
 
         void beSigned(const Bureaucrat& other);
 
-        void setToSign(const int sign);
-        void setToExec(const int exec);
         void setIsSigned(bool Signed);
         const std::string getName(void) const;
         int getToSign(void) const;

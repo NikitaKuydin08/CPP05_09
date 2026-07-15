@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   Form.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkuydin <nikitakuydin@qmail.com>           #+#  +:+       +#+        */
+/*   By: nkuydin <nkuydin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026-07-07 01:57:09 by nkuydin           #+#    #+#             */
-/*   Updated: 2026-07-07 01:57:09 by nkuydin          ###   ########.fr       */
+/*   Created: 2026/07/07 01:57:09 by nkuydin           #+#    #+#             */
+/*   Updated: 2026/07/15 18:55:50 by nkuydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
 
+#include "Bureaucrat.hpp"
 #include <iostream>
 #include <sstream>
 

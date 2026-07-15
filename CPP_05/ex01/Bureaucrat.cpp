@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkuydin <nikitakuydin@qmail.com>           #+#  +:+       +#+        */
+/*   By: nkuydin <nkuydin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026-06-29 07:51:47 by nkuydin           #+#    #+#             */
-/*   Updated: 2026-06-29 07:51:47 by nkuydin          ###   ########.fr       */
+/*   Created: 2026/06/29 07:51:47 by nkuydin           #+#    #+#             */
+/*   Updated: 2026/07/15 18:56:39 by nkuydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
+#include "Form.hpp"
 #include <iostream>
 #include <sstream>
 
@@ -90,8 +91,6 @@ void Bureaucrat::decrement_grade(void) {
 }
 
 const std::string Bureaucrat::getName(void) const { return (this->_name); }
-
-// void Bureaucrat::setName(const std::string name) { this->_name = name; }
 
 void Bureaucrat::setGrade(int grade) { this->_grade = grade; }
 
