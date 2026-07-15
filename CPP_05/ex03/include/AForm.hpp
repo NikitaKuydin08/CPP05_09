@@ -32,7 +32,7 @@ class AForm {
         AForm(const std::string name, const int toSign, const int toExec);
         AForm(const AForm& copy);
         AForm& operator=(const AForm& copy);
-        ~AForm(void);
+        virtual ~AForm(void);
 
         void beSigned(const Bureaucrat& other);
 

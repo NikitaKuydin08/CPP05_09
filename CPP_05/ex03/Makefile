@@ -1,7 +1,7 @@
-NAME = AForm
+NAME = Intern
 
 CXX = c++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98 
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -g
 
 INCLUDE_DIRS = \
 				./include/
@@ -14,7 +14,8 @@ SRC = \
 				./src/main.cpp \
 				./src/PresidentialPardonForm.cpp \
 				./src/RobotomyRequestForm.cpp \
-				./src/ShrubberyCreationForm.cpp
+				./src/ShrubberyCreationForm.cpp \
+				./src/Intern.cpp
 
 OBJ = ${patsubst ./src/%.cpp,./obj/%.o,${SRC}}
 

@@ -19,17 +19,17 @@
 #include <iostream>
 
 int main(void) {
-    // try {
-    //     Bureaucrat bur("Maxim", 136);
-    //     ShrubberyCreationForm shrubbery("Monkey");
-    //     std::cout << shrubbery << std::endl;
-    //     bur.signForm(shrubbery);
-    //     bur.executeForm(shrubbery);
-    //     std::cout << shrubbery << std::endl;
-    // }
-    // catch (const std::exception &e) {
-    //     std::cout << "Exception: " << e.what() << std::endl;
-    // }
+    try {
+        Bureaucrat bur("Maxim", 136);
+        ShrubberyCreationForm shrubbery("Monkey");
+        std::cout << shrubbery << std::endl;
+        bur.signForm(shrubbery);
+        bur.executeForm(shrubbery);
+        std::cout << shrubbery << std::endl;
+    }
+    catch (const std::exception &e) {
+        std::cout << "Exception: " << e.what() << std::endl;
+    }
 
     // try {
     //     Bureaucrat crat("David", 44);
@@ -57,23 +57,6 @@ int main(void) {
     // catch (const std::exception &e) {
     //     std::cout << "Exception: " << e.what() << std::endl;
     // }
-
-    try {
-        Bureaucrat tac("Maxim", 34);
-        Bureaucrat cat;
-        RobotomyRequestForm rob("Malenikie");
-        RobotomyRequestForm bor;
-
-        cat = tac;
-        bor = rob;
-        std::cout << tac << std::endl;
-        std::cout << cat << std::endl;
-        std::cout << bor << std::endl;
-        std::cout << rob << std::endl;
-    }
-    catch (const std::exception &e) {
-
-    }
 
     return 0;
 }
