@@ -13,6 +13,8 @@
 #ifndef SCALARCONVERTER_HPP
 # define SCALARCONVERTER_HPP
 
+#include <string>
+
 class ScalarConverter {
     private:
         ScalarConverter(void);
@@ -22,6 +24,7 @@ class ScalarConverter {
 
     public:
         static void convert(const std::string toConvert);
-}
+
+};
 
 #endif
