@@ -62,7 +62,10 @@ static void print_int(std::string toConvert) {
 
     ss << toConvert;
     ss >> i;
-    if (isprint(i))
+    if (i > std::numeric_limits<int>::max() ||
+        i < std::numeric_limits<int>::min())
+        std::cout << "char: impossible" << std::endl;
+    else if (isprint(i))
         std::cout << "char: '" << static_cast<char>(i) << "'" << std::endl;
     else
         std::cout << "char: Non displayable" << std::endl;
@@ -185,8 +188,8 @@ void ScalarConverter::convert(std::string toConvert) {
         _type = "int";
     else if (toConvert.find_first_not_of("+-0123456789.") == std::string::npos)
     {
-        if (toConvert.find_first_of(".") != toConvert.find_last_of(".") ||
-            !isdigit(toConvert[0]) || !isdigit(toConvert.find(".") + 1))
+        if ((toConvert.find_first_of(".") != toConvert.find_last_of(".")) ||
+            !isdigit(toConvert[0]) || !isdigit(toConvert[toConvert.find(".") + 1]))
             _type = "error";
         else
             _type = "double";
@@ -195,11 +198,11 @@ void ScalarConverter::convert(std::string toConvert) {
     {
         if (toConvert.find_first_of(".") != toConvert.find_last_of(".") ||
             toConvert.find_first_of("f") != toConvert.find_last_of("f") ||
-            !isdigit(toConvert[0]) || !isdigit(toConvert.find(".") + 1) ||
+            !isdigit(toConvert[0]) || !isdigit(toConvert[toConvert.find(".") + 1]) ||
             toConvert[toConvert.find("f") + 1] != '\0')
             _type = "error";
         else
-            _type = "double";
+            _type = "float";
     }
     else if (toConvert.size() == 1)
         _type = "char";
