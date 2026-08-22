@@ -28,7 +28,7 @@ class Array {
 
         class NumOutOfBound : public std::exception {
             public:
-                const char * what() const throw() {
+                virtual const char * what() const throw() {
                     return "The program tried to access an element out of bound";
                 }
         };

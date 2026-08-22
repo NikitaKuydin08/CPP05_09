@@ -15,9 +15,6 @@
 
 #include <iostream>
 
-// Since we have a reference to a constant instance as a parameter 
-// Templates must be defined in the header files.
-
 template <typename T>
 void swap(T &a, T &b) {
     T temp = a;
@@ -26,9 +23,9 @@ void swap(T &a, T &b) {
 }
 
 template <typename T>
-T const & min(T const &a, T const &b) { return (a < b) ? a : b; }
+T const& min(T const &a, T const &b) { return (a < b) ? a : b; }
 
 template <typename T>
-T const & max(T const &a, T const &b) { return (a > b) ? a : b; }
+T const& max(T const &a, T const &b) { return (a > b) ? a : b; }
 
 #endif

@@ -41,6 +41,9 @@ int main(void) {
     const size_t len1 = 5;
     iter(tab1, len1, print<const int>);
 
+    const int tab4[] = {10, 20, 30, 40};
+    const size_t len4 = 4;
+    iter(tab4, len4, print<const int>);
 
     Iter tab2[4];
     const size_t len2 = 4;
