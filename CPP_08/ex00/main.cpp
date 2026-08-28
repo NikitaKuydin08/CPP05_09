@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkuydin <nikitakuydin@qmail.com>           #+#  +:+       +#+        */
+/*   By: nkuydin <nkuydin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026-08-23 09:57:26 by nkuydin           #+#    #+#             */
-/*   Updated: 2026-08-23 09:57:26 by nkuydin          ###   ########.fr       */
+/*   Created: 2026/08/23 09:57:26 by nkuydin           #+#    #+#             */
+/*   Updated: 2026/08/28 19:16:18 by nkuydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "easyfind.hpp"
 #include <vector>
 #include <list>
+#include <deque>
 #include <iostream>
 
 int main(void) {

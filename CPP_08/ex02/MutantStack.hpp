@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   MutantStack.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkuydin <nikitakuydin@qmail.com>           #+#  +:+       +#+        */
+/*   By: nkuydin <nkuydin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026-08-26 15:36:41 by nkuydin           #+#    #+#             */
-/*   Updated: 2026-08-26 15:36:41 by nkuydin          ###   ########.fr       */
+/*   Created: 2026/08/26 15:36:41 by nkuydin           #+#    #+#             */
+/*   Updated: 2026/08/28 19:03:57 by nkuydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ class MutantStack {
         typedef typename std::deque<T>::iterator iterator;
         typedef typename std::deque<T>::reverse_iterator reverse_iterator;
         typedef typename std::deque<T>::const_iterator const_iterator;
-        typedef typename std::deque<T>::const_reverse_iterator const_reverse_iterator;
 
         size_type size() const { return(deque.size()); }
         bool empty() { return ((deque.empty()) ? true : false); }
@@ -71,10 +70,8 @@ class MutantStack {
         iterator end(void) { return(deque.end()); }
         reverse_iterator rbegin(void) { return(deque.rbegin()); }
         reverse_iterator rend(void) { return(deque.rend()); }
-        const_iterator begin(void) const { return(deque.end()); }
-        const_iterator end(void) const { return(deque.begin()); }
-        const_reverse_iterator rbegin(void) const { return(deque.rend()); }
-        const_reverse_iterator rend(void) const { return(deque.rbegin()); }
+        const_iterator begin(void) const { return(deque.begin()); }
+        const_iterator end(void) const { return(deque.end()); }
 
         operator std::stack<T, std::deque<T> > () {
             std::stack<T, std::deque<T> > newStack(deque);
