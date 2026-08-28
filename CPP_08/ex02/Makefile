@@ -1,4 +1,4 @@
-NAME = Find
+NAME = Stack
 
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98

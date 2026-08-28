@@ -1,9 +1,9 @@
-NAME = Find
+NAME = Span
 
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRC = main.cpp
+SRC = main.cpp Span.cpp
 
 OBJS = ${SRC:.cpp=.o}
 

@@ -10,12 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#ifndef EASYFIND_HPP
+# define EASYFIND_HPP
 
 #include <exception>
-// #include <vector>
 #include <algorithm>
-#include <iostream>
 
 //  - std::find() is used to find the first occurrence of a given value
 // in a specified range. 
@@ -36,7 +35,7 @@ int easyfind(const Container& c, int number) {
     if (c.empty())  
         throw(NoOccurrence());
 
-    typename Container::value_type::iterator it;
+    typename Container::const_iterator it;
 
     it = std::find(c.begin(), c.end(), number);
     if (it != c.end())
@@ -57,3 +56,5 @@ int easyfind(const Container& c, int number) {
 //         return (std::distance(container.begin(), it));
 //     throw(NoOccurrence());
 // }
+
+#endif
