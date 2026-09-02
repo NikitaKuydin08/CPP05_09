@@ -17,13 +17,13 @@
 int main(int argc, char** argv) {
     if (argc != 2)
     {
-        std::cerr << "Error: could not open file. Correct use: ./btc path_to_file";
+        std::cerr << "Error: could not open file. Correct use: ./btc path_to_file" << std::endl;
         return (false);
     }
 
     try {
-        BitcoinExchange::init_n_check(argv[1]);
-        BitcoinExchange::exchange();
+        BitcoinExchange::fill_map();
+        BitcoinExchange::exchange(argv[1]);
     }
     catch (std::exception &e) {
         std::cerr << "Error: " << e.what() << std::endl;

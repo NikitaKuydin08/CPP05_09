@@ -2,6 +2,7 @@
 
 #include "exception"
 #include <map>
+#include <string>
 
 class NotOpen : public std::exception {
     public:
@@ -19,7 +20,7 @@ class BitcoinExchange {
         BitcoinExchange& operator=(const BitcoinExchange& copy) { (void)copy; return (*this); };
         ~BitcoinExchange(void) {};
     public:
-        static void init_n_check(char* file);
-        static void exchange(void);
+        static void fill_map(void);
+        static void exchange(char* file);
 };
 
