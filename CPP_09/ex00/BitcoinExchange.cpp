@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkuydin <nikitakuydin@qmail.com>           #+#  +:+       +#+        */
+/*   By: nkuydin <nkuydin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026-08-31 08:08:40 by nkuydin           #+#    #+#             */
-/*   Updated: 2026-08-31 08:08:40 by nkuydin          ###   ########.fr       */
+/*   Created: 2026/08/31 08:08:40 by nkuydin           #+#    #+#             */
+/*   Updated: 2026/09/04 01:25:52 by nkuydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,11 @@
 #include <fstream>
 #include <sstream>
 #include <ctime>
-
+#include <cstring>
+#include <cstdlib>
+#include <iterator>
 // int compare (size_t pos, size_t len, const string& str) - compare(10, 3, " | ")
 
-bool global_valid = true;
 std::map<std::string, float> _data;
 
 // printing function to print input file errors 
@@ -27,9 +28,27 @@ void printError(std::string message) {
 }
 
 void printGoodOutput(std::string& date, float& fvalue) {
-    (void)date;
-    (void)fvalue;
-    std::cout << std::endl;
+    std::cout << date << " => " << fvalue << " = ";
+    
+    float result;
+    std::map<std::string, float>::iterator some = _data.find(date);
+    result = some->second * fvalue;
+    std::cout << result << std::endl;
+}
+
+time_t parseDate(std::string DateStr) {
+    char dash;
+    std::stringstream ss(DateStr);
+
+    struct tm Date;
+    std::memset(&Date, 0, sizeof(Date));
+    ss >> Date.tm_year >> dash >> Date.tm_mon >> dash >> Date.tm_mday;
+    Date.tm_year -= 1900; Date.tm_mon -= 1;
+    Date.tm_hour = 1;
+    Date.tm_min = 0;
+    Date.tm_sec = 0;
+    
+    return (mktime(&Date));
 }
 
 bool check_value_format(std::string value, float& res, bool isInput) {
@@ -120,8 +139,12 @@ void find_t_closest_date(std::string& date) {
         return ;
     }
     else {
-        prev = std::prev(low);
-
+        prev = --low;
+        if (parseDate(date) - parseDate(prev->first) <
+            parseDate(low->first) - parseDate(date))
+            date = prev->first;
+        else
+            date = low->first;
     }
 }
 
@@ -155,29 +178,3 @@ void BitcoinExchange::exchange(char* file) {
     }
     ReadFile.close();
 }
-
-/*
-    date | value
-    2011-01-03 | 3 // passed the check, did multiplication, printed the line
-    2011-01-03 | 2
-    2011-01-03 | 1
-    2011-01-03 | 1.2
-    2011-01-09 | 1
-    2012-01-11 | -1 // failed check, printed the error line
-    2001-42-42
-    2012-01-11 | 1
-    2012-01-11 | 2147483648
-*/
-
-/*
-    $> ./btc input.txt
-    2011-01-03 => 3 = 0.9
-    2011-01-03 => 2 = 0.6
-    2011-01-03 => 1 = 0.3
-    2011-01-03 => 1.2 = 0.36
-    2011-01-09 => 1 = 0.32
-    Error: not a positive number.
-    Error: bad input => 2001-42-42
-    2012-01-11 => 1 = 7.1
-    Error: too large a number.
-*/
