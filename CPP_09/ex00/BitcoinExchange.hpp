@@ -1,8 +1,11 @@
 #pragma once
 
-#include "exception"
+#include <exception>
 #include <map>
 #include <string>
+
+# define RED "\033[0;31m"
+# define RESET "\033[0m"
 
 class NotOpen : public std::exception {
     public:
@@ -23,4 +26,3 @@ class BitcoinExchange {
         static void fill_map(void);
         static void exchange(char* file);
 };
-

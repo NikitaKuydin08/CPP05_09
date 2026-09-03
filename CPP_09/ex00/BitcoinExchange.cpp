@@ -6,7 +6,7 @@
 /*   By: nkuydin <nkuydin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/31 08:08:40 by nkuydin           #+#    #+#             */
-/*   Updated: 2026/09/04 01:25:52 by nkuydin          ###   ########.fr       */
+/*   Updated: 2026/09/04 02:38:29 by nkuydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@
 #include <cstring>
 #include <cstdlib>
 #include <iterator>
-// int compare (size_t pos, size_t len, const string& str) - compare(10, 3, " | ")
+// int compare (size_t pos, size_t len, const string& str)
 
 std::map<std::string, float> _data;
 
-// printing function to print input file errors 
+//---------------------------------- PRINTING FUNCTIONS ---------------------------------//
 void printError(std::string message) {
     std::cout << "Error: " << message << std::endl;
 }
@@ -35,22 +35,9 @@ void printGoodOutput(std::string& date, float& fvalue) {
     result = some->second * fvalue;
     std::cout << result << std::endl;
 }
+//----------------------------------------------------------------------------------------//
 
-time_t parseDate(std::string DateStr) {
-    char dash;
-    std::stringstream ss(DateStr);
-
-    struct tm Date;
-    std::memset(&Date, 0, sizeof(Date));
-    ss >> Date.tm_year >> dash >> Date.tm_mon >> dash >> Date.tm_mday;
-    Date.tm_year -= 1900; Date.tm_mon -= 1;
-    Date.tm_hour = 1;
-    Date.tm_min = 0;
-    Date.tm_sec = 0;
-    
-    return (mktime(&Date));
-}
-
+//---------------------------------- CHECK FORMAT FUNCTIONS ------------------------------//
 bool check_value_format(std::string value, float& res, bool isInput) {
     char *end_ptr;
 
@@ -62,6 +49,7 @@ bool check_value_format(std::string value, float& res, bool isInput) {
         return (false);
     return (true);
 }
+
 
 bool check_date_format(std::string dateStr) {
     if (dateStr.length() != 10 || dateStr[4] != '-' || dateStr[7] != '-')
@@ -90,9 +78,29 @@ bool check_date_format(std::string dateStr) {
         return (true);
     return (false);
 }
+//-----------------------------------------------------------------------------------------//
 
-// std::pair<map::iterator, bool > temp = _data.insert(std::make_pair(line.substr(0, 10), line.substr(11)));
+//------------------------------------- HELPER FUNCTIONS ----------------------------------//
+time_t parseDate(std::string DateStr) {
+    char dash;
+    std::stringstream ss(DateStr);
+
+    struct tm Date;
+    std::memset(&Date, 0, sizeof(Date));
+    ss >> Date.tm_year >> dash >> Date.tm_mon >> dash >> Date.tm_mday;
+    Date.tm_year -= 1900; Date.tm_mon -= 1;
+    Date.tm_hour = 1;
+    Date.tm_min = 0;
+    Date.tm_sec = 0;
+    
+    return (mktime(&Date));
+}
+
 bool make_pairs(std::string line, std::string& exception) {
+    if (line.compare(10, 1, ",") != 0 || !isdigit(line[11])) {
+        exception = "Database's line format is invalid => " + line;
+        return (false);
+    }
     std::string date = line.substr(0, 10);
     if (!check_date_format(date)) {
         exception = "Database's date format is invalid => " + date;
@@ -111,27 +119,10 @@ bool make_pairs(std::string line, std::string& exception) {
     return (true);
 }
 
-// check database, and exctract data key-value into map container
-void BitcoinExchange::fill_map(void) {
-    std::string exception;
-    std::fstream ReadDB("data.csv", std::ios::in);
-    if (!ReadDB.is_open())
-        throw(NotOpen());
-    std::string line;
-    if (!std::getline(ReadDB, line) || line.compare("date,exchange_rate"))
-        throw(std::runtime_error("DB empty or invalid format"));
-    while (std::getline(ReadDB, line)) {
-        if (!make_pairs(line, exception)) {
-            ReadDB.close();
-            throw (std::runtime_error(exception));
-        }
-    }
-    ReadDB.close();
-}
-
 void find_t_closest_date(std::string& date) {
-    std::map<std::string, float>::iterator low, prev;
+    std::map<std::string, float>::iterator low, prev, safe_low;
     low = _data.lower_bound(date);
+    safe_low = low;
     if (low == _data.end())
         std::cout << "When do we hit it?" << std::endl;
     else if (low == _data.begin()) {
@@ -139,7 +130,7 @@ void find_t_closest_date(std::string& date) {
         return ;
     }
     else {
-        prev = --low;
+        prev = --safe_low;
         if (parseDate(date) - parseDate(prev->first) <
             parseDate(low->first) - parseDate(date))
             date = prev->first;
@@ -164,6 +155,26 @@ void execute_main_loop(std::string line) {
         find_t_closest_date(date);
     printGoodOutput(date, fvalue);
 }
+//-----------------------------------------------------------------------------------------//
+
+//---------------------------------- MAIN FUNCTIONS ---------------------------------------//
+// check database, and exctract data key-value into map container
+void BitcoinExchange::fill_map(void) {
+    std::string exception;
+    std::fstream ReadDB("data.csv", std::ios::in);
+    if (!ReadDB.is_open())
+        throw(NotOpen());
+    std::string line;
+    if (!std::getline(ReadDB, line) || line.compare("date,exchange_rate"))
+        throw(std::runtime_error("DB empty or invalid format"));
+    while (std::getline(ReadDB, line)) {
+        if (!make_pairs(line, exception)) {
+            ReadDB.close();
+            throw (std::runtime_error(exception));
+        }
+    }
+    ReadDB.close();
+}
 
 // check input file and do multiplication
 void BitcoinExchange::exchange(char* file) {
@@ -178,3 +189,4 @@ void BitcoinExchange::exchange(char* file) {
     }
     ReadFile.close();
 }
+//-----------------------------------------------------------------------------------------//

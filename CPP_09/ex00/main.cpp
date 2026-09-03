@@ -6,7 +6,7 @@
 /*   By: nkuydin <nkuydin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/31 06:46:37 by nkuydin           #+#    #+#             */
-/*   Updated: 2026/09/04 01:25:59 by nkuydin          ###   ########.fr       */
+/*   Updated: 2026/09/04 02:41:54 by nkuydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int main(int argc, char** argv) {
         BitcoinExchange::exchange(argv[1]);
     }
     catch (std::exception &e) {
-        std::cerr << "Error: " << e.what() << std::endl;
+        std::cerr << RED << "Error: " << e.what() << RESET << std::endl;
     }   
 }
 
