@@ -163,7 +163,7 @@ void BitcoinExchange::fill_map(void) {
     std::string exception;
     std::fstream ReadDB("data.csv", std::ios::in);
     if (!ReadDB.is_open())
-        throw(NotOpen());
+        throw(std::runtime_error("could not open file."));
     std::string line;
     if (!std::getline(ReadDB, line) || line.compare("date,exchange_rate"))
         throw(std::runtime_error("DB empty or invalid format"));
@@ -180,7 +180,7 @@ void BitcoinExchange::fill_map(void) {
 void BitcoinExchange::exchange(char* file) {
     std::fstream ReadFile(file, std::ios::in);
     if (!ReadFile.is_open())
-        throw(NotOpen());
+        throw(std::runtime_error("could not open file."));
     std::string line;
     if (!std::getline(ReadFile, line) || line.compare("date | value"))
         throw(std::runtime_error("Input file is emty or of invalid format"));

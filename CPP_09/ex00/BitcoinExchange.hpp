@@ -7,13 +7,6 @@
 # define RED "\033[0;31m"
 # define RESET "\033[0m"
 
-class NotOpen : public std::exception {
-    public:
-        virtual const char* what() const throw() {
-            return ("could not open file.");
-        }
-};
-
 class BitcoinExchange {
     private:
         static std::map<std::string, float> _data;
