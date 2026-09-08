@@ -27,7 +27,9 @@ int main(int argc, char** argv) {
     }
     catch (std::exception &e) {
         std::cerr << RED << "Error: " << e.what() << RESET << std::endl;
-    }   
+        return (false);
+    }
+    return (true);
 }
 
 /*
