@@ -2,6 +2,7 @@
 
 #include <stack>
 #include <exception>
+#include <string>
 
 class RPN {
     private:
