@@ -2,6 +2,7 @@
 
 #include <vector>
 #include <deque>
+#include <string>
 
 #define GREEN "\033[0;32m"
 #define RESET "\033[0m"
@@ -14,7 +15,6 @@ bool already_exists(int num, std::vector<int> victor);
 
 #ifdef DEBUG
 
-#include <string>
 #include <iostream>
 
 #define GREEN "\033[0;32m"

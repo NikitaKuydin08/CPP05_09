@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkuydin <nikitakuydin@qmail.com>           #+#  +:+       +#+        */
+/*   By: nkuydin <nkuydin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026-09-14 10:40:21 by nkuydin           #+#    #+#             */
-/*   Updated: 2026-09-14 10:40:21 by nkuydin          ###   ########.fr       */
+/*   Created: 2026/09/14 10:40:21 by nkuydin           #+#    #+#             */
+/*   Updated: 2026/09/15 03:18:41 by nkuydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ std::vector<int> check_input(int argc, char **argv) {
             original.push_back(Num);
         }
     }
+    if (original.size() < 2)
+        throw(std::runtime_error("Wrong number of integers, less than 2."));
     return (original);
 }
 

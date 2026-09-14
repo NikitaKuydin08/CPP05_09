@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkuydin <nikitakuydin@qmail.com>           #+#  +:+       +#+        */
+/*   By: nkuydin <nkuydin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026-09-12 16:51:09 by nkuydin           #+#    #+#             */
-/*   Updated: 2026-09-12 16:51:09 by nkuydin          ###   ########.fr       */
+/*   Created: 2026/09/12 16:51:09 by nkuydin           #+#    #+#             */
+/*   Updated: 2026/09/15 04:00:32 by nkuydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -177,22 +177,31 @@ int main(int argc, char** argv) {
         return (false);
     }
     try {
+        struct timespec start, end;
         std::vector<int> original = check_input(argc, argv);
         std::cout << "Before:  ";
         print_vector_seq(original);
 
-        clock_t start, end;
-        start = clock();
+        // clock_t start, end;
+        // start = clock();
+        clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &start);
         std::vector<int> victor(original.begin(), original.end());
         merge_insert_vector(victor);
-        end = clock();
-        double vector_time = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1000000.0;
+        clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &end);
+        double vector_time = (end.tv_sec - start.tv_sec) * 1000000.0
+            + (end.tv_nsec - start.tv_nsec) / 1000.0;
+        // end = clock();
+        // double vector_time = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1000000.0;
 
-        start = clock();
+        // start = clock();
+        clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &start);
         std::deque<int> deque(original.begin(), original.end());
         merge_insert_deque(deque);
-        end = clock();
-        double deque_time = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1000000.0;
+        clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &end);
+        double deque_time = (end.tv_sec - start.tv_sec) * 1000000.0
+            + (end.tv_nsec - start.tv_nsec) / 1000.0;
+        // end = clock();
+        // double deque_time = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1000000.0;
 
         std::cout << "After:   ";
         print_vector_seq(victor);
