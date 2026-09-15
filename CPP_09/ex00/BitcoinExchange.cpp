@@ -6,7 +6,7 @@
 /*   By: nkuydin <nkuydin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/31 08:08:40 by nkuydin           #+#    #+#             */
-/*   Updated: 2026/09/04 02:38:29 by nkuydin          ###   ########.fr       */
+/*   Updated: 2026/09/15 17:20:54 by nkuydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include <cstring>
 #include <cstdlib>
 #include <iterator>
+#include <exception>
 // int compare (size_t pos, size_t len, const string& str)
 
 std::map<std::string, float> _data;

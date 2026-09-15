@@ -1,6 +1,6 @@
-#pragma once
+#ifndef BITCOINEXCHANGE_HPP
+#define BITCOINEXCHANGE_HPP
 
-#include <exception>
 #include <map>
 #include <string>
 
@@ -19,3 +19,5 @@ class BitcoinExchange {
         static void fill_map(void);
         static void exchange(char* file);
 };
+
+#endif

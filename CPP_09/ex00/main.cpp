@@ -6,13 +6,14 @@
 /*   By: nkuydin <nkuydin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/31 06:46:37 by nkuydin           #+#    #+#             */
-/*   Updated: 2026/09/04 02:41:54 by nkuydin          ###   ########.fr       */
+/*   Updated: 2026/09/15 17:20:57 by nkuydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
 
 #include <iostream>
+#include <exception>
 
 int main(int argc, char** argv) {
     if (argc != 2)
