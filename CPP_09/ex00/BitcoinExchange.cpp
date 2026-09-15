@@ -81,20 +81,20 @@ bool check_date_format(std::string dateStr) {
 //-----------------------------------------------------------------------------------------//
 
 //------------------------------------- HELPER FUNCTIONS ----------------------------------//
-time_t parseDate(std::string DateStr) {
-    char dash;
-    std::stringstream ss(DateStr);
+// time_t parseDate(std::string DateStr) {
+//     char dash;
+//     std::stringstream ss(DateStr);
 
-    struct tm Date;
-    std::memset(&Date, 0, sizeof(Date));
-    ss >> Date.tm_year >> dash >> Date.tm_mon >> dash >> Date.tm_mday;
-    Date.tm_year -= 1900; Date.tm_mon -= 1;
-    Date.tm_hour = 1;
-    Date.tm_min = 0;
-    Date.tm_sec = 0;
+//     struct tm Date;
+//     std::memset(&Date, 0, sizeof(Date));
+//     ss >> Date.tm_year >> dash >> Date.tm_mon >> dash >> Date.tm_mday;
+//     Date.tm_year -= 1900; Date.tm_mon -= 1;
+//     Date.tm_hour = 1;
+//     Date.tm_min = 0;
+//     Date.tm_sec = 0;
     
-    return (mktime(&Date));
-}
+//     return (mktime(&Date));
+// }
 
 bool make_pairs(std::string line, std::string& exception) {
     if (line.compare(10, 1, ",") != 0 || !isdigit(line[11])) {
@@ -131,11 +131,11 @@ void find_t_closest_date(std::string& date) {
     }
     else {
         prev = --safe_low;
-        if (parseDate(date) - parseDate(prev->first) <
-            parseDate(low->first) - parseDate(date))
-            date = prev->first;
-        else
-            date = low->first;
+        // if (parseDate(date) - parseDate(prev->first) <
+        //     parseDate(low->first) - parseDate(date)) ====> a check to take the closest date lower or upper
+        date = prev->first;
+        // else
+        //     date = low->first;
     }
 }
 
